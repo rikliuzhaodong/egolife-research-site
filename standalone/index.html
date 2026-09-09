@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EgoLife Research Atlas｜长时多模态记忆数据集调研</title>
+  <meta name="description" content="系统比较 EgoLife、CASTLE、EgoMonth、HD-EPIC、TeleEgo 等第一视角、多模态和长期记忆数据集。">
+  <meta property="og:title" content="EgoLife Research Atlas"><meta property="og:description" content="长时多模态记忆数据版图"><meta property="og:image" content="og.png">
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav><a href="#top"><b>EL</b> Research Atlas</a><div><a href="#summary">摘要</a><a href="#profile">档案</a><a href="#datasets">比较</a><a href="#advice">建议</a><a href="#sources">来源</a></div></nav>
+  <header id="top"><p class="meta">RESEARCH PORTAL · CVPR 2025 <span>检索截止 2026.09.09</span></p><h1>EgoLife<br><i>Research Atlas</i></h1><p class="sub">EgoLife 数据集、研究团队与长时多模态记忆数据版图</p><aside><b>研究判断</b><strong>多日持续记录<br>≠ 24×7 无缝连续记录</strong><small>总 camera-hours 也不是个人经历时长。</small></aside></header>
+  <div class="stats"><div><b>06</b><span>主要参与者</span></div><div><b>07</b><span>自然日历天</span></div><div><b>≈300h</b><span>论文采集量</span></div><div><b>≈266h</b><span>清洗保留量</span></div><div><b>15</b><span>比较数据集</span></div></div>
+  <main>
+    <section id="summary"><label>01 · EXECUTIVE SUMMARY</label><h2>先看清 EgoLife 的研究位置</h2><div class="grid summary"><article><b>共同生活七天</b><p>6 名参与者共享真实空间，人物、地点、事件和对话可形成跨日联系。</p></article><article><b>多视角、多传感器</b><p>Meta Aria 第一视角与 15 台固定 GoPro，并涉及音频、眼动、IMU、mmWave 与 WiFi。</p></article><article><b>开放状态需拆开</b><p>论文构建 3,000 道题；当前主要公开/评测集中于 Jake 500，部分模态未发现。</p></article><article><b>直接后续是 Ego-R1</b><p>其余工作多为长视频技术迁移、第一视角新数据或数字文件长期记忆。</p></article></div></section>
+    <section id="profile" class="dark"><label>02 · EGOLIFE DOSSIER</label><h2>EgoLife 数据集档案</h2><div class="grid dossier"><article><h3>采集</h3><p>6 人、共享公寓、7 天；约每 3 小时中断导出与维护。</p></article><article><h3>视角</h3><p>6 × Meta Aria ego；15 × fixed GoPro exo；2 × mmWave。</p></article><article><h3>模态</h3><p>视频、音频、ASR、文本、眼动、IMU、WiFi、位姿与 3D；公开完整度不一。</p></article><article><h3>任务</h3><p>EgoLifeQA、EgoGPT、EgoRAG 与 EgoButler。</p></article></div><div class="notice"><b>部分公开</b> 论文、主页、GitHub、HF 与 Jake 500 可见；完整 exo/IMU/mmWave/WiFi/VRS/标定/3D 在主 HF 资源中未发现。</div></section>
+    <section><label>03 · TIME SCALE LENS</label><h2>“长”至少有六种含义</h2><div class="scale"><span>媒体文件</span><span>Session</span><span>个人累计</span><span>Evidence delay</span><span>自然跨度</span><span>Camera-hours</span></div><p class="rule">总视频规模大 ≠ 单段样本长 ≠ 自然跨度长 ≠ 存在长期记忆任务</p></section>
+    <section><label>04 · TEAM & LINEAGE</label><h2>团队与研究谱系</h2><ol class="timeline"><li><time>2023–24</time><b>PSG4D · Octopus · LongVA · LMMs-Eval</b><span>前置技术积累</span></li><li><time>2025</time><b>EgoLife</b><span>Jingkang Yang 项目主导；Ziwei Liu 通讯作者 / PI</span></li><li><time>2025</time><b>Ego-R1</b><span>最直接延续</span></li><li><time>2025–26</time><b>VideoLucy · SimpleStream</b><span>长视频与流式技术迁移</span></li><li><time>2026</time><b>Demo-ICL · EgoTools · HippoCamp · FileGram</b><span>第一视角工具、演示学习与持久数字记忆</span></li></ol></section>
+    <section id="datasets"><label>05 · DATASET BROWSER</label><h2>十五个候选数据集</h2><div class="tools"><input id="q" placeholder="搜索数据集、任务或模态"><select id="tier"><option value="">全部类别</option><option>A</option><option>B</option><option>C</option></select><label><input type="checkbox" id="audio"> 包含音频</label><label><input type="checkbox" id="cross"> 跨天</label><button id="clear">清除</button></div><p id="count"></p><div id="cards" class="cards"></div></section>
+    <section id="advice" class="dark"><label>06 · RESEARCH BLUEPRINT</label><h2>三套组合，而不是一个“万能集”</h2><div class="stacks"><article><b>严格跨天记忆</b><p>EgoMonth + EgoLife / EgoMemReason + MM-Lifelong Month</p></article><article><b>多模态生活助手</b><p>Ego4D + HoloAssist + EgoCom + CASTLE + TeleEgo + HD-EPIC</p></article><article><b>Ego—Exo 关联</b><p>Ego-Exo4D + CASTLE + EgoLife（实际获得 exo 数据后）</p></article></div></section>
+    <section id="sources"><label>07 · SOURCES</label><h2>来源与可信度</h2><p>关键事实优先取自论文原文、官方项目页、官方仓库和数据卡。不确定信息保留“未确认”或“推断”。</p><div class="links"><a href="https://egolife-ai.github.io/" target="_blank">EgoLife 项目 ↗</a><a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EgoLife_Towards_Egocentric_Life_Assistant_CVPR_2025_paper.html" target="_blank">CVPR 论文 ↗</a><a href="https://github.com/EvolvingLMMs-Lab/EgoLife" target="_blank">GitHub ↗</a><a href="https://huggingface.co/datasets/lmms-lab/EgoLife" target="_blank">Hugging Face ↗</a></div></section>
+  </main>
+  <footer>EgoLife Research Atlas · 2026.09.09 · 离线静态版</footer><script src="app.js"></script>
+</body></html>

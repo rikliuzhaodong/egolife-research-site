@@ -35,9 +35,9 @@ pnpm build
 
 - `dist/index.html`
 
-它使用同目录下的 `styles.css`、`app.js`、`favicon.svg` 和 `og.png`，不需要本地服务器。静态版保留研究摘要、数据档案、时间尺度、团队谱系、15 个数据集的搜索/类别/音频/跨天筛选、研究建议与主要来源。
+它使用同目录下的 `styles.css`、`app.js`、`favicon.svg`、`og.png` 和 `research/` 图片，不需要本地服务器。静态版保留采集场景与 SOP、Topic 设计、数据格式、QA 构造与测试协议、EgoButler/EgoGPT/EgoRAG 框图，以及 15 个数据集的搜索与筛选。
 
-可编辑的静态版源文件位于 `standalone/`。每次运行生产构建后，若 `dist/` 被重建，请将 `standalone/index.html`、`standalone/styles.css`、`standalone/app.js` 及 `public/` 中的图标与分享图复制到 `dist/` 根目录。
+可编辑的静态版源文件位于 `standalone/`。每次运行生产构建后，若 `dist/` 被重建，请将 `standalone/index.html`、`standalone/styles.css`、`standalone/app.js` 及 `public/` 中的图标、分享图和 `research/` 图片复制到 `dist/` 根目录。
 
 ## 内容与数据文件
 
@@ -45,6 +45,7 @@ pnpm build
 - `app/page.tsx`：页面结构与交互
 - `app/globals.css`：响应式视觉系统
 - `public/og.png`：1200×630 社交分享图
+- `public/research/*.webp`：来自 EgoLife 官方论文／博客的场景、时间线与模型图（网页优化版）
 - `reports/report-source.md`：上游调研报告（位于项目同级 `reports/` 目录）
 
 ## 数据边界

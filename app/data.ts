@@ -46,6 +46,8 @@ export const capabilityRows: { name:string; values: Coverage[] }[] = [
 
 export const sources = [
   ['EgoLife · CVPR 2025 paper','https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EgoLife_Towards_Egocentric_Life_Assistant_CVPR_2025_paper.html'],
+  ['EgoLife · supplement','https://openaccess.thecvf.com/content/CVPR2025/supplemental/Yang_EgoLife_Towards_Egocentric_CVPR_2025_supplemental.pdf'],
+  ['EgoLife · official blog','https://egolife-ai.github.io/blog/'],
   ['EgoLife · project','https://egolife-ai.github.io/'], ['EgoLife · GitHub','https://github.com/EvolvingLMMs-Lab/EgoLife'],
   ['EgoLife · Hugging Face','https://huggingface.co/datasets/lmms-lab/EgoLife'], ['Ego-R1','https://egolife-ai.github.io/Ego-R1/'],
   ['CASTLE','https://castle-dataset.github.io/'], ['EgoMonth','https://arxiv.org/html/2608.13113'], ['HD-EPIC','https://hd-epic.github.io/site/'],

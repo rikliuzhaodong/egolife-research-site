@@ -87,6 +87,15 @@ const qaFunnel = [
   ['500 / 人','最终修订','人工改写问题和答案、制作三个干扰项，并标注证据与模态需求。'],
   ['3,000 总题','论文构建','6 人各 500；主论文 quick evaluation 使用 Jake 的 500 题。'],
 ];
+const figureSizes: Record<string,[number,number]> = {
+  '/research/egolife-teaser.webp':[2200,1124],
+  '/research/egohouse.webp':[2200,1525],
+  '/research/week-timeline.webp':[2200,844],
+  '/research/egolifeqa.webp':[2200,901],
+  '/research/egobutler.webp':[2200,1073],
+  '/research/egogpt.webp':[1916,880],
+  '/research/egorag.webp':[2200,1224],
+};
 
 function Status({children}:{children:string}) { return <span className={`status status-${children === '已公开' ? 'open' : children === '需要申请' ? 'request' : children === '部分公开' ? 'partial' : 'unknown'}`}>{children}</span>; }
 
@@ -299,10 +308,14 @@ export default function Home() {
 }
 
 function SectionHead({no,eyebrow,title,copy}:{no:string;eyebrow:string;title:React.ReactNode;copy:string}) { return <div className="section-head"><div><span className="section-no">{no}</span><p className="eyebrow-text">{eyebrow}</p></div><h2>{title}</h2><p>{copy}</p></div>; }
-function ResearchFigure({src,alt,caption,source,dark=false,compact=false}:{src:string;alt:string;caption:string;source:string;dark?:boolean;compact?:boolean}) { return <figure className={`research-figure ${dark?'figure-dark':''} ${compact?'figure-compact':''}`}><a href={src} target="_blank" aria-label={`查看大图：${alt}`}>
-  {/* Locally optimized WebP research figures retain their original aspect ratios. */}
-  {/* eslint-disable-next-line @next/next/no-img-element */}
-  <img src={src} alt={alt} loading="lazy" /></a><figcaption><span>{caption}</span><a href={source} target="_blank" rel="noreferrer">官方来源 ↗</a></figcaption></figure>; }
+function ResearchFigure({src,alt,caption,source,dark=false,compact=false}:{src:string;alt:string;caption:string;source:string;dark?:boolean;compact?:boolean}) {
+  const [width,height] = figureSizes[src] ?? [2200,1200];
+  return <figure className={`research-figure ${dark?'figure-dark':''} ${compact?'figure-compact':''}`}><a href={src} target="_blank" aria-label={`查看大图：${alt}`}>
+    {/* Locally optimized WebP research figures retain their original aspect ratios. */}
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" />
+  </a><figcaption><span>{caption}</span><a href={source} target="_blank" rel="noreferrer">官方来源 ↗</a></figcaption></figure>;
+}
 function ProfileCard({title,lines}:{title:string;lines:string[]}) { return <article className="profile-card"><h3>{title}</h3>{lines.map((line,i)=><p key={line}><span>{String(i+1).padStart(2,'0')}</span>{line}</p>)}</article>; }
 function DatasetTable({items,expanded,toggle}:{items:typeof datasets;expanded:string[];toggle:(name:string)=>void}) { return <div className="table-wrap"><table className="data-table"><thead><tr><th>数据集</th><th>年份</th><th>视角</th><th>模态 / 音频</th><th>参与者 / 场景</th><th>单段最长</th><th>总时长</th><th>自然跨度</th><th>记忆任务</th><th>开放状态</th><th></th></tr></thead><tbody>{items.map(d=><Fragment key={d.name}><tr className={expanded.includes(d.name)?'open-row':''}><td><span className={`tier tier-${d.tier.toLowerCase()}`}>{d.tier}</span><b>{d.name}</b></td><td>{d.year}</td><td>{d.perspective}</td><td>{d.modalities.slice(0,3).join(' · ')}<small>音频：{d.audio}</small></td><td>{d.participants}</td><td>{d.maxClip}</td><td>{d.totalHours}</td><td>{d.span}<small>{d.continuity}</small></td><td>{d.memoryTasks}</td><td><Status>{d.status}</Status></td><td><button className="expand-button" aria-expanded={expanded.includes(d.name)} onClick={()=>toggle(d.name)}>{expanded.includes(d.name)?'收起':'展开'}</button></td></tr>{expanded.includes(d.name)&&<tr className="detail-row"><td colSpan={11}><div><p><b>与 EgoLife 的相似点</b>{d.similarity}</p><p><b>主要差异</b>{d.difference}</p><p><b>标注</b>{d.annotations}</p><p><b>获取条件</b>{d.access}</p><a href={d.url} target="_blank" rel="noreferrer">论文 / 主页 ↗</a></div></td></tr>}</Fragment>)}</tbody></table></div>; }
 function DatasetCards({items,expanded,toggle}:{items:typeof datasets;expanded:string[];toggle:(name:string)=>void}) { return <div className="dataset-cards">{items.map(d=><article key={d.name}><header><span className={`tier tier-${d.tier.toLowerCase()}`}>{d.tier}</span><div><h3>{d.name}</h3><p>{d.year} · {d.perspective}</p></div><Status>{d.status}</Status></header><dl><div><dt>总时长</dt><dd>{d.totalHours}</dd></div><div><dt>自然跨度</dt><dd>{d.span}</dd></div><div><dt>音频</dt><dd>{d.audio}</dd></div><div><dt>连续性</dt><dd>{d.continuity}</dd></div></dl><p>{d.memoryTasks}</p><button className="card-expand" aria-expanded={expanded.includes(d.name)} onClick={()=>toggle(d.name)}>{expanded.includes(d.name)?'收起详情':'展开详情'}</button>{expanded.includes(d.name)&&<div className="card-detail"><p><b>相似点：</b>{d.similarity}</p><p><b>差异：</b>{d.difference}</p><p><b>获取：</b>{d.access}</p><a href={d.url} target="_blank" rel="noreferrer">论文 / 主页 ↗</a></div>}</article>)}</div>; }
